@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @flight.codigo %>
+</h1>
+
+<p>
+  <b>Aerolínea:</b>
+  <%= @flight.aerolinea %>
+</p>
+<p>
+  <b>Ciudad:</b>
+  <%= @flight.ciudad %>
+</p>
+<table>
+<tr>
+  <td><b>Salida:</b>
+  </td>
+  <td><b>Llegada:</b>
+  </td>
+</tr>
+<tr>
+  <td><p>
+  <%= @flight.salida %>
+</p>
+  </td>
+  <td><p>
+  
+  <%= @flight.llegada %>
+</p>
+  </td>
+</tr>
+</table>
+
+
+Seleccionar Asiento:
+<select class="large" name="mediumSelect" id="mediumSelect"> 
+  <% @seats.each do |seat| %>
+    <% if seat.vuelo==@flight.codigo && seat.estado==false %>
+      <option value="<%= seat.id %>">Asiento N° <%= seat.numero %> (<%= seat.posicion %>)</option>
+    <% end %>
+  <% end %>
+</select>
+
+ <button id="btnReservar" data-icon="star" data-theme="b" data-form="ui-btn-up-a" class="ui-btn-hidden" aria-disabled="false">Realizar Reserva</button>
